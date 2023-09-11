@@ -9,12 +9,12 @@ $career_image = get_field('career_image', $frontpage_id);
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow left-animation">
                     <div class="careers-image-box">
                         <div class="careers-image back-img" <?php if (isset($career_image) && !empty($career_image)) { ?> style="background-image: url('<?php echo $career_image; ?>');" <?php } ?>></div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow right-animation">
                     <div class="careers-content">
                         <div class="sub-title">
                             <?php

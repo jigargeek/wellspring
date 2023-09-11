@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-content white-text">
-                        <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
+                        <h1 class="h1-title arapey-font wow fadeup-animation"><?php the_title(); ?></h1>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="contact-page-sec-wp">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow left-animation">
                         <div class="contact-page-left">
                             <div class="sec-title">
                                 <?php 
@@ -177,7 +177,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow right-animation">
                         <div class="contact-form-wp">
                             <div class="contact-form">
                                 <?php echo do_shortcode('[contact-form-7 id="5fec7df" title="Contact Form"]'); ?>

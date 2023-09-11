@@ -14,22 +14,22 @@ $phone_number = get_field('phone_number', 'option');
                     <div class="banner-content white-text">
                         <?php
                         if (isset($banner_title) && !empty($banner_title)) { ?>
-                            <h1 class="h1-title"><?php echo $banner_title; ?></h1>
+                            <h1 class="h1-title wow fadeup-animation"><?php echo $banner_title; ?></h1>
                         <?php
                         }
                         if (isset($banner_content) && !empty($banner_content)) { ?>
-                            <div class="banner-description-text">
+                            <div class="banner-description-text wow fadeup-animation">
                                 <?php echo $banner_content; ?>
                                 <?php
                                 if (isset($banner_sub_title) && !empty($banner_sub_title)) { ?>
-                                    <h2 class="h2-title"><?php echo $banner_sub_title; ?></h2>
+                                    <h2 class="h2-title wow fadeup-animation"><?php echo $banner_sub_title; ?></h2>
                                 <?php }
                                 ?>
                             </div>
                         <?php
                         }
                         ?>
-                        <div class="banner-btn">
+                        <div class="banner-btn wow fadeup-animation">
                             <?php
                             if (isset($phone_number) && !empty($phone_number)) { ?>
                                 <a href="<?php echo $phone_number['url']; ?>" class="sec-btn" title="Lynchburg - <?php echo $phone_number['title']; ?>">Lynchburg - <?php echo $phone_number['title']; ?></a>
@@ -56,7 +56,7 @@ $client_url = get_field('client_url', 'option');
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 wow fadeup-animation">
                     <div class="schedule-content">
                         <?php
                         if (isset($schedule_online_text) && !empty($schedule_online_text)) { ?>
@@ -91,7 +91,7 @@ $about_video_image = get_field('about_video_image');
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 order-2 order-lg-1">
+                <div class="col-lg-6 order-2 order-lg-1 wow left-animation">
                     <div class="common-text-content">
                         <div class="sec-title">
                             <?php
@@ -116,10 +116,10 @@ $about_video_image = get_field('about_video_image');
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2">
+                <div class="col-lg-6 order-1 order-lg-2 wow right-animation">
                     <div class="how-we-can-help-image-content">
                         <div class="how-we-can-help-video">
-                            <div class="back-img video" <?php if( isset($about_video_image) && !empty($about_video_image) ){ ?>style="background-image: url('<?php echo $about_video_image; ?>');" <?php } ?>>
+                            <div class="back-img video" <?php if (isset($about_video_image) && !empty($about_video_image)) { ?>style="background-image: url('<?php echo $about_video_image; ?>');" <?php } ?>>
                                 <a href="<?php echo home_url(); ?>/wp-content/themes/wellspring/assets/video/AdobeStock_587826960.mp4" data-fancybox="video" title="how-we-can-help-video">
                                     <img src="<?php echo home_url(); ?>/wp-content/themes/wellspring/assets/images/play-btn-icon.svg" alt="play-btn-icon" width="83" height="83">
                                 </a>
@@ -148,7 +148,7 @@ $schedule_an_appointment_text = get_field('schedule_an_appointment_text');
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow left-animation">
                     <div class="telehealth-left-content">
                         <div class="sec-title">
                             <?php
@@ -166,7 +166,7 @@ $schedule_an_appointment_text = get_field('schedule_an_appointment_text');
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow right-animation">
                     <?php
                     if (isset($health_content) && !empty($health_content)) { ?>
                         <div class="telehealth-right-content white-text">
@@ -175,7 +175,7 @@ $schedule_an_appointment_text = get_field('schedule_an_appointment_text');
                                 <?php
                                 if (isset($schedule_an_appointment_link) && !empty($schedule_an_appointment_link)) { ?>
                                     <a href="<?php echo $schedule_an_appointment_link; ?>" title="Schedule An Appointment" class="sec-btn" target="_blank"><?php echo $schedule_an_appointment_text; ?></a>
-                                    <?php
+                                <?php
                                 } ?>
                             </div>
                         </div>
@@ -198,12 +198,12 @@ $services_image = get_field('services_image');
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow left-animation">
                     <div class="who-we-work-image-box">
                         <div class="who-we-work-image back-img" <?php if (isset($services_image) && !empty($services_image)) { ?> style=" background-image: url('<?php echo $services_image; ?>');" <?php } ?>></div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 wow right-animation">
                     <div class="who-we-work-with-content">
                         <div class="sec-title">
                             <?php
@@ -218,7 +218,7 @@ $services_image = get_field('services_image');
                                 <div class="who-we-work-with-description">
                                     <?php echo $services_content; ?>
                                 </div>
-                                <?php
+                            <?php
                             }
 
                             if (have_rows('services')) { ?>
@@ -231,7 +231,7 @@ $services_image = get_field('services_image');
                                             <?php
                                             if (isset($services_sub_title) && !empty($services_sub_title)) { ?>
                                                 <h5 class="who-we-work-accordion-box-title"><?php echo $services_sub_title; ?></h5>
-                                                <?php
+                                            <?php
                                             }
                                             if (have_rows('sub_services_content')) { ?>
                                                 <div class="who-we-work-accordion-text">
@@ -239,22 +239,22 @@ $services_image = get_field('services_image');
                                                         <?php
                                                         while (have_rows('sub_services_content')) {
                                                             the_row();
-                                                            $services_list_content = get_sub_field('services_list_content'); 
+                                                            $services_list_content = get_sub_field('services_list_content');
                                                             if (isset($services_list_content) && !empty($services_list_content)) { ?>
                                                                 <li><?php echo $services_list_content; ?></li>
-                                                                <?php
-                                                            } ?>
                                                             <?php
+                                                            } ?>
+                                                        <?php
                                                         } ?>
                                                     </ul>
                                                 </div>
                                             <?php
                                             } ?>
                                         </div>
-                                        <?php
+                                    <?php
                                     } ?>
                                 </div>
-                                <?php
+                            <?php
                             } ?>
                         </div>
                     </div>
@@ -278,7 +278,7 @@ $the_query = new WP_Query(array('post_type' => 'testimonials', 'post_status' => 
                     <div class="sec-title">
                         <?php
                         if (isset($client_title) && !empty($client_title)) { ?>
-                            <h2 class="h2-title"><?php echo $client_title; ?></h2>
+                            <h2 class="h2-title wow fadeup-animation"><?php echo $client_title; ?></h2>
                         <?php
                         } ?>
                     </div>
@@ -304,7 +304,7 @@ $the_query = new WP_Query(array('post_type' => 'testimonials', 'post_status' => 
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
+                        <?php
                             }
                         } ?>
                     </div>
@@ -318,57 +318,58 @@ $the_query = new WP_Query(array('post_type' => 'testimonials', 'post_status' => 
 
 <!-- Gallery Section Start -->
 <?php
-    if (have_rows('home_gallery')) { ?>
-        <section class="gallery-sec">
-            <div class="sec-wp">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="common-tabing-list gallery-tabing-list">
-                                <ul>
-                                    <?php                                
-                                    while (have_rows('home_gallery')) {
-                                        the_row();
-                                        $gallery_title = get_sub_field('gallery_title'); ?>
-                                        <li>
-                                            <span class="<?php echo (get_row_index() ==  1) ? 'active' : ''; ?>" data-id="<?php echo $gallery_title; ?>" id="<?php echo get_row_index(); ?>"><?php echo $gallery_title; ?></span>
-                                        </li>
-                                        <?php 
-                                    } ?>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-slide-wp">
-                        <span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
-                        <div class="row gallery-slider">
-                            <?php
-                            while (have_rows('home_gallery')) {
-                                the_row();
-                                $image_gallery = get_sub_field('image_gallery');
-                                if (isset($image_gallery) && !empty($image_gallery)) {
-                                    if (get_row_index() == 1) {
-                                        $i=1;
-                                        foreach ($image_gallery as $img) { ?>
-                                            <div class="col-lg-4 col-md-6">
-                                                <a href="<?php echo $img; ?>" class="gallery-img-wp" data-fancybox="gallery-img" title="Gallery-image-<?php echo $i; ?>">
-                                                    <div class="gallery-image-box">
-                                                        <div class="gallery-image back-img" style=" background-image: url('<?php echo $img; ?>');"></div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <?php $i++;
-                                        }
-                                    }
-                                }
-                            } ?>
+if (have_rows('home_gallery')) { ?>
+    <section class="gallery-sec">
+        <div class="sec-wp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="common-tabing-list gallery-tabing-list">
+                            <button class="sec-btn tab-dropdown for-mob" type="button">Lynchburg</button>
+                            <ul>
+                                <?php
+                                while (have_rows('home_gallery')) {
+                                    the_row();
+                                    $gallery_title = get_sub_field('gallery_title'); ?>
+                                    <li>
+                                        <span class="<?php echo (get_row_index() ==  1) ? 'active' : ''; ?>" data-id="<?php echo $gallery_title; ?>" id="<?php echo get_row_index(); ?>"><?php echo $gallery_title; ?></span>
+                                    </li>
+                                <?php
+                                } ?>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="gallery-slide-wp">
+                    <span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
+                    <div class="row gallery-slider">
+                        <?php
+                        while (have_rows('home_gallery')) {
+                            the_row();
+                            $image_gallery = get_sub_field('image_gallery');
+                            if (isset($image_gallery) && !empty($image_gallery)) {
+                                if (get_row_index() == 1) {
+                                    $i = 1;
+                                    foreach ($image_gallery as $img) { ?>
+                                        <div class="col-lg-4 col-md-6">
+                                            <a href="<?php echo $img; ?>" class="gallery-img-wp" data-fancybox="gallery-img" title="Gallery-image-<?php echo $i; ?>">
+                                                <div class="gallery-image-box">
+                                                    <div class="gallery-image back-img" style=" background-image: url('<?php echo $img; ?>');"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                        <?php $i++;
+                                    }
+                                }
+                            }
+                        } ?>
+                    </div>
+                </div>
             </div>
-        </section>
-        <?php 
-    } ?>
+        </div>
+    </section>
+<?php
+} ?>
 <!-- Gallery Section End -->
 
 <!-- Careers Section Start -->

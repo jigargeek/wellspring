@@ -2147,7 +2147,7 @@ button.close:hover {
     display: inline-block;
 }
 
-.site-branding a img{
+.site-branding a img {
     width: 100%;
     height: 100%;
 }
@@ -2671,6 +2671,10 @@ button.close:hover {
     padding: 85px 0 169px 0;
 }
 
+.common-tabing-list {
+    position: relative;
+}
+
 .common-tabing-list.gallery-tabing-list {
     margin-bottom: 34px;
 }
@@ -3136,6 +3140,11 @@ button.close:hover {
     padding: 120px 0 164px 0;
 }
 
+.team-about-content-wp{
+    position: relative;
+    z-index: 1;
+}
+
 .team-about-sec .common-text-content {
     max-width: 588px;
     margin: 58px 0 0 auto;
@@ -3181,6 +3190,8 @@ button.close:hover {
 .team-list-wp {
     background-color: var(--dark-color-2);
     padding: 30px 0 28px 0;
+    position: relative;
+    z-index: 6;
 }
 
 .common-tabing-list.team-tabing-list {
@@ -3397,6 +3408,11 @@ button.close:hover {
 
 .services-about-sec {
     padding: 142px 0 162px;
+}
+
+.services-about-content-wp{
+    position: relative;
+    z-index: 1;
 }
 
 .common-text-content.services-page-common-text {
@@ -4948,6 +4964,59 @@ a.prev.page-numbers {
         padding: 80px 0 100px 0;
     }
 
+    .tab-dropdown {
+        position: relative;
+        width: 100%;
+        outline: none;
+        font-size: 18px;
+        text-align: left;
+        padding: 5px 15px;
+    }
+
+    .tab-dropdown:after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Pro";
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        color: var(--black-color);
+        font-size: 18px;
+        font-weight: 900;
+        transition: 0.3s;
+        transform: translate(0, -50%);
+    }
+
+    .tab-dropdown:hover:after {
+        color: var(--primary-color);
+    }
+
+    .tab-dropdownpdown-show .tab-dropdown:after{
+        transform: translate(0,-50%) rotate(180deg);
+    }
+
+    .tab-dropdownpdown-show.common-tabing-list ul{
+        display: block !important;
+    }
+
+    .common-tabing-list ul {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 100%;
+        padding: 15px;
+        box-shadow: var(--box-shadow);
+        margin-left: 0;
+        background-color: var(--white-color);
+        display: none;
+        text-align: left;
+        z-index: 1;
+    }
+
+    .common-tabing-list ul li span{
+        font-size: 18px;
+    }
+
     .row.gallery-slider {
         --gutter: 30px;
     }
@@ -5062,13 +5131,23 @@ a.prev.page-numbers {
     }
 
     .common-tabing-list.team-tabing-list ul {
-        gap: 30px;
-        flex-wrap: wrap;
-        justify-content: center;
+        position: absolute;
     }
 
     .common-tabing-list.team-tabing-list ul::before {
         content: none;
+    }
+
+    .common-tabing-list ul li {
+        margin-bottom: 5px;
+    }
+
+    .common-tabing-list ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .common-tabing-list.team-tabing-list ul li span {
+        color: var(--black-color);
     }
 
     .team-list-sec {
@@ -5514,10 +5593,6 @@ a.prev.page-numbers {
         padding-bottom: 50px;
     }
 
-    .common-tabing-list.team-tabing-list ul {
-        gap: 20px 30px;
-    }
-
     .team-member-btn-wp .sec-btn {
         font-size: 16px;
     }
@@ -5716,12 +5791,8 @@ a.prev.page-numbers {
         height: 350px;
     }
 
-    .common-tabing-list ul {
-        gap: 25px;
-    }
-
     .common-tabing-list ul li span {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 30px;
     }
 
@@ -5738,6 +5809,14 @@ a.prev.page-numbers {
 
     .team-about-image-box {
         height: 350px;
+    }
+
+    .tab-dropdown {
+        font-size: 16px;
+    }
+
+    .tab-dropdown:after {
+        font-size: 16px;
     }
 
     .common-tabing-list.team-tabing-list ul li span {

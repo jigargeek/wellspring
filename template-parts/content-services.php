@@ -9,10 +9,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-content white-text">
-                        <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
+                        <h1 class="h1-title arapey-font wow fadeup-animation"><?php the_title(); ?></h1>
                         <?php 
                             if( isset($services_banner_content) && !empty($services_banner_content) ){ ?>
-                                <div class="inner-banner-description-text">
+                                <div class="inner-banner-description-text wow fadeup-animation">
                                     <?php echo $services_banner_content; ?>
                                 </div>
                                 <?php 
@@ -39,11 +39,10 @@
     $learn_more_text = get_field('learn_more_text', 'option');
 ?>
 <section class="services-about-sec">
-    
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 order-2 order-lg-1">
+                <div class="col-lg-6 services-about-content-wp order-2 order-lg-1 wow left-animation">
                     <div class="common-text-content services-page-common-text">
                         <div class="sec-title">
                             <?php 
@@ -72,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2">
+                <div class="col-lg-6 order-1 order-lg-2 wow right-animation">
                     <div class="services-about-right">
                         <div class="services-about-image-box">
                             <div class="back-img" <?php if( isset($services_about_image) && !empty($services_about_image) ){ ?> style=" background-image: url('<?php echo $services_about_image; ?>');" <?php } ?>></div>
@@ -91,7 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="services-feature-title">
+                    <div class="services-feature-title wow fadeup-animation">
                         <?php 
                             $services_heading = get_field('services_heading');
                             if( isset($services_heading) && !empty($services_heading) ){ ?>
@@ -110,7 +109,7 @@
                                     the_row();
                                     $services_title = get_sub_field('services_title');
                                     $services_content = get_sub_field('services_content'); ?>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 wow fadeup-animation">
                                         <div class="services-feature-box">
                                             <div class="services-feature-Content-title">
                                                 <?php 
@@ -151,14 +150,14 @@
         <div class="container">
             <div class="services-about-sec-wp">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow left-animation">
                         <div class="services-about-right">
                             <div class="services-about-image-box">
                                 <div class="back-img" <?php if( isset($counseling_services_image) && !empty($counseling_services_image) ){ ?> style=" background-image: url('<?php echo $counseling_services_image; ?>');" <?php } ?>></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow right-animation">
                         <div class="common-text-content services-page-common-text">
                             <div class="sec-title">
                                 <?php 
@@ -202,19 +201,19 @@
                         <div class="sec-title">
                             <?php 
                                 if( isset($counseling_title) && !empty($counseling_title) ){ ?>
-                                    <h2 class="h2-title arapey-font"><?php echo $counseling_title; ?></h2>
+                                    <h2 class="h2-title arapey-font wow fadeup-animation"><?php echo $counseling_title; ?></h2>
                                     <?php 
                                 } ?>
                         </div>
                         <?php 
                             if( isset($counseling_content) && !empty($counseling_content) ){ ?>
-                                <div class="your-journey-content-description white-text">
+                                <div class="your-journey-content-description white-text wow fadeup-animation">
                                     <?php echo $counseling_content; ?>
                                 </div>
                                 <?php 
                             } ?>
 
-                            <div class="your-journey-content-btn">
+                            <div class="your-journey-content-btn wow fadeup-animation">
                                 <?php 
                                     if( is_page(28) || is_page(30)){ ?>
                                         <a href="<?php echo $lynchburg_phone_number['url']; ?>" class="sec-btn arapey-font" title="Lynchburg - <?php echo $lynchburg_phone_number['title']; ?>">Lynchburg - <?php echo $lynchburg_phone_number['title']; ?></a>

@@ -24,7 +24,7 @@ $email_link = get_field('email_link', 'option');
 		<div class="container">
 			<div class="footer-top">
 				<div class="row">
-					<div class="col-lg-2">
+					<div class="col-lg-2 wow fadeup-animation">
 						<div class="footer-logo">
 							<?php the_custom_logo(); ?>
 						</div>
@@ -69,7 +69,7 @@ $email_link = get_field('email_link', 'option');
 					$richmond_office_hours = get_field('richmond_office_hours', 'option');
 					$verified_logo = get_field('verified_logo', 'option');
 					?>
-					<div class="col-lg-8">
+					<div class="col-lg-8 wow fadeup-animation">
 						<div class="footer-about">
 							<div class="footer-contect-info-box white-text">
 								<?php
@@ -144,7 +144,7 @@ $email_link = get_field('email_link', 'option');
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-2">
+					<div class="col-lg-2 wow fadeup-animation">
 						<div class="verified-image-wp">
 							<div class="verified-image-box">
 								<div class="verified-image back-img" <?php if (isset($verified_logo) && !empty($verified_logo)) { ?> style="background-image: url('<?php echo $verified_logo; ?>');" <?php } ?>></div>
@@ -156,7 +156,7 @@ $email_link = get_field('email_link', 'option');
 			<div class="footer-bottom">
 				<div class="row align-items-center">
 					<div class="col-12">
-						<div class="footer-bottom-text">
+						<div class="footer-bottom-text wow fadeup-animation">
 							<div class="copy-right white-text">
 								<p>© Wellspring of Hope LLC 2023</p>
 							</div>
@@ -189,9 +189,7 @@ $email_link = get_field('email_link', 'option');
 			<div class="modal-content">
 				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
 				<div class="modal-content-box">
-					<div class="team-modal-wp team-content">
-						
-						</div>
+					<div class="team-modal-wp team-content"></div>
 				</div>
 			</div>
 		</div>

@@ -354,6 +354,7 @@ function gallery_image_tabbing(){
 		</div>
 		<?php	
 	}
+	wp_reset_postdata();
 	die();
 }
 
@@ -361,47 +362,43 @@ add_action('wp_ajax_team_tabbing','team_image_tabbing');
 add_action( 'wp_ajax_nopriv_team_tabbing', 'team_image_tabbing' );
 
 function team_image_tabbing(){
-	global $post;
-	$id = $_POST['id'];
-	$terms = get_terms('location');
-
-	foreach($terms as $custom_term) {
-		wp_reset_query();
-		$args = array(
-			'post_type' => 'teams',
-			'post_status'   => 'publish',
-			'posts_per_page' => -1,
-			'order' => 'ASC',
-			'meta_query' => array(
-				array(
-					'key'   => 'position_title',
-					'value'   => array(''),
-					'compare' => 'NOT IN'
-				)
-			),
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'location',
-					'field' => 'slug',
-					'terms' => $id,
-				),
-			),
-		);
-	}
-	$the_query = new WP_Query($args);
+global $post;
+$id = $_POST['id'];
+$terms = get_terms('location');
+$args = array(
+	'post_type' => 'teams',
+	'post_status'   => 'publish',
+	'posts_per_page' => -1,
+	'order' => 'ASC',
+	'meta_query' => array(
+		array(
+			'key'   => 'position_title',
+			'value'   => array(''),
+			'compare' => 'NOT IN'
+		)
+	),
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'location',
+			'field' => 'slug',
+			'terms' => $id,
+		),
+	),
+);
+$the_query = new WP_Query($args);
 
 	if($the_query->have_posts()){ ?>
-		<div class="row">
 		<span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
+		<div class="row">
 			<?php
 			while($the_query->have_posts()){
 				$the_query->the_post();
 				$title = get_the_title();
-                $explode = explode(' ', $title);
+				$explode = explode(' ', $title);
 				$thumbnail_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 				$position = get_post_meta(get_the_ID(),'position_title',true);
 				$content = get_the_content(); ?>
-				<div class="col-lg-4" id="<?php echo get_the_ID(); ?>">
+				<div class="col-lg-4 col-sm-6" id="<?php echo get_the_ID(); ?>">
 					<div class="team-meamber-info">
 						<?php 
 							if( isset($thumbnail_url) && !empty($thumbnail_url) ){ ?>
@@ -453,7 +450,9 @@ function team_image_tabbing(){
 			} ?>
 		</div>
 		<?php
-	} ?>
-	<?php wp_die();
+	} 
+	wp_reset_postdata();
+	wp_die();
 }
+?>
 

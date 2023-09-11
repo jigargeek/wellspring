@@ -11,7 +11,7 @@ $counseling_about_content = get_field('counseling_about_content');
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-content white-text">
-                        <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
+                        <h1 class="h1-title arapey-font wow fadeup-animation"><?php the_title(); ?></h1>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@ $counseling_about_content = get_field('counseling_about_content');
 <div class="grup-session-wp">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 wow fadeup-animation">
                 <?php 
                     if( isset($counseling_about_image) && !empty($counseling_about_image) ){ ?>
                         <div class="grup-session-image-box">
@@ -44,7 +44,7 @@ $counseling_about_content = get_field('counseling_about_content');
         <div class="container">
             <div class="counseling-group-contact-wp">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow left-animation">
                         <div class="counseling-group-contact-left">
                             <div class="sec-title">
                                 <?php 
@@ -62,7 +62,7 @@ $counseling_about_content = get_field('counseling_about_content');
                                 } ?>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 wow right-animation">
                         <div class="counseling-group-contact-form">
                             <div class="contact-form">
                                 <?php echo do_shortcode('[contact-form-7 id="007d0fc" title="Counselling Group Form"]'); ?>
