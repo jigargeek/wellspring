@@ -10,8 +10,6 @@ jQuery(document).ready(function ($) {
 		scrollInput: false
     });
 
-    
-
     var currentRequest = null;
     jQuery(".gallery-tabing-list li span").on("click", function () {
         if ($(this).hasClass("active")) {
@@ -38,6 +36,22 @@ jQuery(document).ready(function ($) {
             }
         });
 
+    });
+
+    jQuery(document).on('click', '.common-tabing-list ul', function () {
+        jQuery('.common-tabing-list').removeClass('tab-dropdownpdown-show');
+        var photo = jQuery(document).find(".common-tabing-list ul .active").text();
+        jQuery('.tab-dropdown').text(photo);
+    });
+
+    jQuery(document).on('click', '.common-tabing-list .tab-dropdown', function () {
+        jQuery('.common-tabing-list').toggleClass('tab-dropdownpdown-show');
+    });
+
+    $(document).on("click", function (e) {
+        if ($(e.target).is(".common-tabing-list .tab-dropdown") === false) {
+            jQuery('.common-tabing-list').removeClass('tab-dropdownpdown-show');
+        }
     });
 
     jQuery(".team-tabing-list li span").on("click", function () {
@@ -130,6 +144,8 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+    
 
     jQuery('.wpcf7-form input[name="documents"]').change(function (e) {
         var resume_file = e.target.files[0];
@@ -337,16 +353,14 @@ jQuery(document).ready(function ($) {
         jQuery("#site-navigation").removeClass("toggled");
     });
 
+    jQuery("#primary-menu .menu-item a").not('#menu-item-10 a:first()').click(function () {
+        jQuery("#site-navigation").removeClass("toggled");
+    });
+
     jQuery(document).on("click", ".team-member-image img", function(){
         var data = jQuery(this).parent().siblings('.popup-content').html();
         jQuery("#team_popup .team-modal-wp").html(data);
     });
-
-    // jQuery(".team-member-image img").on("click", function(e){
-    //     e.preventDefault();
-    //     var data = jQuery(this).parent().siblings('.popup-content').html();
-    //     jQuery("#team_popup .team-modal-wp").html(data);
-    // });
 
     /*Quote Modal open JS */
     jQuery("#team_popup").on('show.bs.modal', function () {
@@ -401,15 +415,15 @@ jQuery(document).ready(function ($) {
         jQuery(".menu-item-has-children a").first().attr('href', 'javascript:void(0);');
 
         /* dropDown mobile menu show and hide */
-        jQuery('body').on('click', '#primary-menu .menu-item-has-children', function () {
-            if ((jQuery(this).hasClass('active-sub-menu'))) {
-                jQuery(this).removeClass('active-sub-menu');
-                jQuery(this).find('.sub-menu').css('display', 'none');
+        jQuery('body').on('click', '.menu-item-has-children a', function () {
+            if ((jQuery(this).parent().hasClass('active-sub-menu'))) {
+                jQuery(this).parent().removeClass('active-sub-menu');
+                jQuery(this).parent().find('.sub-menu').css('display', 'none');
             } else {
                 jQuery(".menu-item-has-children").removeClass('active-sub-menu');
                 jQuery(".sub-menu").css('display', 'none');
-                jQuery(this).addClass('active-sub-menu');
-                jQuery(this).find('.sub-menu').css('display', 'block');
+                jQuery(this).parent().addClass('active-sub-menu');
+                jQuery(this).parent().find('.sub-menu').css('display', 'block');
             }
         });
 

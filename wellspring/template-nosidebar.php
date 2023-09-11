@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="banner-content white-text">
-                    <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
+                    <h1 class="h1-title arapey-font wow fadeup-animation"><?php the_title(); ?></h1>
                 </div>
             </div>
         </div>
