@@ -206,7 +206,8 @@ function change_html_custom_logo() {
             esc_url( home_url( '/' ) ),
             wp_get_attachment_image( $custom_logo_id, 'full', false, array(
                 'class'    => 'custom-logo',
-             	'data-no-lazy' =>'1'
+             	'data-no-lazy' =>'1',
+				'alt' => $site_name,
             ) )
         );
     return $html;  
@@ -327,27 +328,31 @@ function gallery_image_tabbing(){
 	$slug = $_POST['id'];
 
 	if( have_rows('home_gallery', $frontpage_id)){ ?>
-	<div class="row gallery-slider">
-		<?php 
-			while( have_rows('home_gallery', $frontpage_id) ){
-				the_row();
-				$image_gallery = get_sub_field('image_gallery');
-				
-				if(get_row_index() == $slug){
-					if( isset($image_gallery) && !empty($image_gallery) ){
-						foreach($image_gallery as $img){ ?>
-							<div class="col-lg-4">
-								<div class="gallery-image-box">
-									<div class="gallery-image back-img" style=" background-image: url('<?php echo $img; ?>');"></div>
+		<span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
+		<div class="row gallery-slider">
+			<?php 
+				while( have_rows('home_gallery', $frontpage_id) ){
+					the_row();
+					$image_gallery = get_sub_field('image_gallery');
+					
+					if(get_row_index() == $slug){
+						if( isset($image_gallery) && !empty($image_gallery) ){
+							$i=1;
+							foreach($image_gallery as $img){ ?>
+								<div class="col-lg-4 col-md-6">
+								<a href="<?php echo $img; ?>" class="gallery-img-wp" data-fancybox="gallery-img" title="Gallery-image-<?php echo $i; ?>">
+									<div class="gallery-image-box">
+										<div class="gallery-image back-img" <?php if( isset($img) && !empty($img) ){ ?> style=" background-image: url('<?php echo $img; ?>');" <?php } ?>></div>
+									</div>
+								</a>
 								</div>
-							</div>
-							<?php 
+								<?php 
+							$i++; }
 						}
 					}
-				}
-			}?>
+				}?>
 		</div>
-	<?php	
+		<?php	
 	}
 	die();
 }
@@ -356,8 +361,8 @@ add_action('wp_ajax_team_tabbing','team_image_tabbing');
 add_action( 'wp_ajax_nopriv_team_tabbing', 'team_image_tabbing' );
 
 function team_image_tabbing(){
-	$id = $_POST['id'];
 	global $post;
+	$id = $_POST['id'];
 	$terms = get_terms('location');
 
 	foreach($terms as $custom_term) {
@@ -378,7 +383,7 @@ function team_image_tabbing(){
 				array(
 					'taxonomy' => 'location',
 					'field' => 'slug',
-					'terms' => $id,//$custom_term->slug,
+					'terms' => $id,
 				),
 			),
 		);
@@ -387,27 +392,68 @@ function team_image_tabbing(){
 
 	if($the_query->have_posts()){ ?>
 		<div class="row">
-			<?php 
+		<span class="spinner" style="display: none;"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i></span>
+			<?php
 			while($the_query->have_posts()){
 				$the_query->the_post();
-				$position = get_post_meta(get_the_ID(),'position_title',true);?>
+				$title = get_the_title();
+                $explode = explode(' ', $title);
+				$thumbnail_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+				$position = get_post_meta(get_the_ID(),'position_title',true);
+				$content = get_the_content(); ?>
 				<div class="col-lg-4" id="<?php echo get_the_ID(); ?>">
-					<div class="team-meamber-info" data-bs-toggle="modal" data-bs-target="#team_popup">
-						<div class="team-member-image">
-							<?php the_post_thumbnail(); ?>
-						</div>
-						<div class="team-member-image-info">
-							<h2 class="h2-title arapey-font"><?php the_title(); ?></h2>
-							<p><?php echo $position; ?></p>	
-						</div>
+					<div class="team-meamber-info">
+						<?php 
+							if( isset($thumbnail_url) && !empty($thumbnail_url) ){ ?>
+								<div class="team-member-image">
+									<img src="<?php echo $thumbnail_url[0]; ?>" alt="<?php the_title(); ?>" width="315" height="315"  data-bs-toggle="modal" data-bs-target="#team_popup">
+								</div>
+								<?php 
+							} ?>
+							<div class="team-member-image-info">
+								<h2 class="h2-title arapey-font"><?php the_title(); ?></h2>
+								<p><?php echo $position; ?></p>	
+							</div>
+							<div class="popup-content" style="display:none;">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="team-modal-image-box">
+											<div class="team-modal-image">
+												<div class="team-modal-image back-img" style=" background-image: url('<?php echo $thumbnail_url[0]; ?>');"></div>
+											</div>
+											<div class="team-modal-image-info white-text">
+												<h2 class="h2-title arapey-font"><?php the_title(); ?></h2>
+												<p><?php echo $position; ?></p>
+												<div class="team-modal-btn">
+													<a href="#" class="sec-btn sm-btn arapey-font" title="Schedule With Erica">Schedule With <?php echo $explode[0]; ?></a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+										<div class="team-modal-content-box">
+											<div class="team-modal-title">
+												<h2 class="h2-title arapey-font"><?php the_title(); ?></h2>
+												<h3 class="h3-title"><?php echo $position; ?></h3>
+											</div>
+											<?php 
+												if( isset($content) && !empty($content) ){ ?>
+													<div class="team-modal-description" data-simplebar>
+														<?php echo $content; ?>
+													</div>
+													<?php 
+												} ?>
+										</div>
+									</div>
+								</div>
+							</div>
 					</div>
 				</div>
 				<?php 
 			} ?>
 		</div>
-		<?php 
+		<?php
 	} ?>
-	<?php 
-	wp_die();
+	<?php wp_die();
 }
 

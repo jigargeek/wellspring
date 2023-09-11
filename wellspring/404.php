@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -10,51 +11,35 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'wellspring' ); ?></h1>
-			</header><!-- .page-header -->
+	<!-- Banner Start -->
+	<section class="main-banner inner-banner" style=" background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2023/09/inner-banner01.jpg');">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="banner-content white-text">
+						<h1 class="h1-title arapey-font"><?php esc_html_e('Oops! That page can&rsquo;t be found.', 'wellspring'); ?></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Banner End -->
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'wellspring' ); ?></p>
+	<!-- 404 Page Section Start -->
+	<div class="inner-page-text error-404 not-found text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<img width="1200" height="937" src="<?php echo home_url(); ?>/wp-content/uploads/2023/09/404.png" alt="404 Not Found!">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 404 Page Section End -->
 
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'wellspring' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$wellspring_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'wellspring' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$wellspring_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();

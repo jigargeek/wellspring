@@ -10,6 +10,8 @@ jQuery(document).ready(function ($) {
 		scrollInput: false
     });
 
+    
+
     var currentRequest = null;
     jQuery(".gallery-tabing-list li span").on("click", function () {
         if ($(this).hasClass("active")) {
@@ -18,7 +20,7 @@ jQuery(document).ready(function ($) {
         jQuery(".gallery-tabing-list li span").removeClass('active');
         jQuery(this).addClass('active');
         var slug = jQuery(this).attr('id');
-        //jQuery(".gallery-loader").css("display", "flex");
+        jQuery(".spinner").css("display", "flex");
 
         currentRequest = $.ajax({
             type: 'POST',
@@ -31,7 +33,7 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 jQuery(".gallery-slider").slick('unslick');
                 jQuery(".gallery-slide-wp").html(data);
-                // jQuery(".gallery-loader").css("display", "none");
+                jQuery(".spinner").css("display", "none");
                 gallery_slider();
             }
         });
@@ -45,6 +47,7 @@ jQuery(document).ready(function ($) {
         let id = jQuery(this).attr('id');
         jQuery(".team-tabing-list li span").removeClass('active');
         jQuery(this).addClass('active');
+        jQuery(".spinner").css("display", "flex");
 
         currentRequest = $.ajax({
             type: 'POST',
@@ -55,21 +58,16 @@ jQuery(document).ready(function ($) {
             },
             dataType: 'html',
             success: function (data) {
-                console.log(data);
-                // jQuery(".gallery-slider").slick('unslick');
                 jQuery(".team-member-content-box").html(data);
-                // // jQuery(".gallery-loader").css("display", "none");
-                // gallery_slider();
+                jQuery(".spinner").css("display", "none");
             }
         });
-
     });
-
 
     /* Home Page accordion */
     jQuery('.who-we-work-accordion .who-we-work-accordion-text').hide();
-    jQuery('.who-we-work-accordion > div:eq(0) h5').addClass('active-content');
-    //jQuery('.who-we-work-accordion > div:eq(0) .who-we-work-accordion-text').slideDown();
+    // jQuery('.who-we-work-accordion > div:eq(0) h5').addClass('active-content');
+    // jQuery('.who-we-work-accordion > div:eq(0) .who-we-work-accordion-text').slideDown();
 
     jQuery('.who-we-work-accordion h5').click(function (j) {
         var dropDown = jQuery(this).closest('div').find('.who-we-work-accordion-text');
@@ -197,7 +195,7 @@ jQuery(document).ready(function ($) {
                 slidesToScroll: 1,
                 infinite: true,
                 dots: false,
-                arrows: false,
+                arrows: true,
                 autoplay: false,
                 autoplaySpeed: 2000,
             }
@@ -218,16 +216,22 @@ jQuery(document).ready(function ($) {
         responsive: [{
             breakpoint: 992,
             settings: {
-                slidesToShow: 1,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 infinite: true,
-                dots: false,
+                dots: true,
                 arrows: false
             }
-        }
+        },{
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
         ]
     });
-    
+
     jQuery('.client-slider').slick({
         slidesToShow: 7,
         slidesToScroll: 1,
@@ -333,23 +337,19 @@ jQuery(document).ready(function ($) {
         jQuery("#site-navigation").removeClass("toggled");
     });
 
-    jQuery('#project_gallery').on('hidden.bs.modal', function () {
-        if(jQuery('.project-slider').hasClass('slick-initialized')) {
-            jQuery('.project-slider').slick('unslick');
-        }
-        jQuery(window).scroll(function () { // this will work when your window scrolled.
-            var height = jQuery(window).scrollTop(); //getting the scrolling height of window
-            if (height < 100) {
-                jQuery(".site-header").removeClass("sticky_head");
-            }
-        });
-        var scrolly = jQuery(this).attr("data-top");
-        jQuery("body").css("top", "0px");
-        window.scrollTo(0, scrolly);
+    jQuery(document).on("click", ".team-member-image img", function(){
+        var data = jQuery(this).parent().siblings('.popup-content').html();
+        jQuery("#team_popup .team-modal-wp").html(data);
     });
 
+    // jQuery(".team-member-image img").on("click", function(e){
+    //     e.preventDefault();
+    //     var data = jQuery(this).parent().siblings('.popup-content').html();
+    //     jQuery("#team_popup .team-modal-wp").html(data);
+    // });
+
     /*Quote Modal open JS */
-    jQuery("#project_gallery, #apply_now").on('show.bs.modal', function () {
+    jQuery("#team_popup").on('show.bs.modal', function () {
         jQuery(window).scroll(function () { // this will work when your window scrolled.
             jQuery(".site-header").addClass("sticky_head");
         });
@@ -359,7 +359,7 @@ jQuery(document).ready(function ($) {
     });
 
     /*Quote Modal close JS */
-    jQuery('#apply_now').on('hidden.bs.modal', function () {
+    jQuery('#team_popup').on('hidden.bs.modal', function () {
         jQuery(window).scroll(function () { // this will work when your window scrolled.
             var height = jQuery(window).scrollTop(); //getting the scrolling height of window
             if (height < 100) {
@@ -488,13 +488,19 @@ function gallery_slider() {
         responsive: [{
             breakpoint: 992,
             settings: {
-                slidesToShow: 1,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 infinite: true,
-                dots: false,
+                dots: true,
                 arrows: false
             }
-        }
+        },{
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
         ]
     });
 }

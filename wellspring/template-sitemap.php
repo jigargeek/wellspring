@@ -12,24 +12,19 @@ get_header();
 $cur_page_id = get_the_ID();
 ?>
 
-<!-- Main Banner Start -->
-
-<section class="main-banner inner-banner">
-    <div class="common-sec">
-        <div class="common-shep for-des" style="-webkit-mask-image: url('');"></div>
-    </div>
+<!-- Banner Start -->
+<section class="main-banner inner-banner" style=" background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2023/09/inner-banner01.jpg');">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-12">
                 <div class="banner-content white-text">
-                    <h1 class="h1-title"><?php the_title(); ?></h1>
+                    <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Main Banner End -->
+<!-- Banner End -->
 
 <div class="inner-page-text privacy-content">
     <div class="container">

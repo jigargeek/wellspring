@@ -64,13 +64,13 @@
                                         } ?>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-xxl-6">
                                         <div class="contact-info">
                                             <ul>
                                                 <?php 
                                                     if( isset($lynchburg_office_location) && !empty($lynchburg_office_location) ){ ?>
                                                         <li>
-                                                            <a href="<?php echo $lynchburg_office_location['url']; ?>" class="contact-info-text" title="<?php echo $lynchburg_office_location['title']; ?>">
+                                                            <a href="<?php echo $lynchburg_office_location['url']; ?>" class="contact-info-text" title="<?php echo $lynchburg_office_location['title']; ?>" target="_blank">
                                                                 <img src="<?php echo home_url(); ?>/wp-content/themes/wellspring/assets/images/map-icon.svg" alt="map-icon" width="22" height="30">
                                                                 <span><?php echo $lynchburg_office_location['title']; ?></span>
                                                             </a>
@@ -80,7 +80,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-xxl-6">
                                         <div class="contact-info">
                                             <ul>
                                                 <?php 
@@ -124,13 +124,13 @@
                                         } ?>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-xxl-6">
                                         <div class="contact-info">
                                             <ul>
                                                 <?php 
                                                     if( isset($richmond_office_location) && !empty($richmond_office_location) ){ ?>
                                                 <li>
-                                                    <a href="<?php echo $richmond_office_location['url']; ?>" class="contact-info-text" title="<?php echo $richmond_office_location['title']; ?>">
+                                                    <a href="<?php echo $richmond_office_location['url']; ?>" class="contact-info-text" title="<?php echo $richmond_office_location['title']; ?>" target="_blank">
                                                         <img src="<?php echo home_url(); ?>/wp-content/themes/wellspring/assets/images/map-icon.svg" alt="map-icon" width="22" height="30">
                                                         <span><?php echo $richmond_office_location['title']; ?></span>
                                                     </a>
@@ -140,7 +140,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-xxl-6">
                                         <div class="contact-info">
                                             <ul>
                                                 <?php 
@@ -179,9 +179,6 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-form-wp">
-                            <div class="sec-title">
-                                <h2 class="h2-title arapey-font">Send Us a Message</h2>
-                            </div>
                             <div class="contact-form">
                                 <?php echo do_shortcode('[contact-form-7 id="5fec7df" title="Contact Form"]'); ?>
                             </div>

@@ -5,12 +5,12 @@
   get_header();
 ?>
 <!-- Banner Start -->
-<section class="main-banner inner-banner">
+<section class="main-banner inner-banner" style=" background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2023/09/inner-banner01.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="banner-content">
-                    <h1 class="h1-title"><?php the_title(); ?></h1>
+                <div class="banner-content white-text">
+                    <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
                 </div>
             </div>
         </div>

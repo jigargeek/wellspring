@@ -1,15 +1,22 @@
 <!-- Inner Banner Start -->
-<section class="main-banner inner-banner services-page-banner back-img" style="background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2023/09/inner-banner02.jpg');">
+<?php 
+    $services_banner_image = get_field('services_banner_image');
+    $services_banner_content = get_field('services_banner_content');
+?>
+<section class="main-banner inner-banner services-page-banner back-img" <?php if( isset($services_banner_image) && !empty($services_banner_image) ){ ?> style="background-image: url('<?php echo $services_banner_image; ?>');" <?php } ?>>
     <div class="sec-wp">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-content white-text">
-                        <h1 class="h1-title arapey-font">Individual Counseling</h1>
-                        <div class="inner-banner-description-text">
-                            <p>We provide individual counseling to help you reduce anxiety, climb out of depression,
-                                cope with addiction, improve your mental health, and reach your goals.</p>
-                        </div>
+                        <h1 class="h1-title arapey-font"><?php the_title(); ?></h1>
+                        <?php 
+                            if( isset($services_banner_content) && !empty($services_banner_content) ){ ?>
+                                <div class="inner-banner-description-text">
+                                    <?php echo $services_banner_content; ?>
+                                </div>
+                                <?php 
+                            } ?>
                     </div>
                 </div>
             </div>
@@ -19,28 +26,56 @@
 <!-- Inner Banner End -->
 
 <!-- Services About Section Start -->
+<?php 
+    $services_about_title = get_field('services_about_title');
+    $about_button_title = get_field('about_button_title');
+    $about_button_link = get_field('about_button_link');
+    $services_about_content = get_field('services_about_content');
+    $services_about_content = get_field('services_about_content');
+    $services_about_image = get_field('services_about_image');
+    $services_about_image = get_field('services_about_image');
+    $about_button_title = get_field('about_button_title');
+    $learn_more_link = get_field('learn_more_link', 'option');
+    $learn_more_text = get_field('learn_more_text', 'option');
+?>
 <section class="services-about-sec">
+    
     <div class="sec-wp">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 order-2 order-lg-1">
                     <div class="common-text-content services-page-common-text">
                         <div class="sec-title">
-                            <h2 class="h2-title arapey-font">Are you feeling stuck or uncertain <span>aboutwhere your life is headed?</span></h2>
+                            <?php 
+                                if( isset($services_about_title) && !empty($services_about_title) ){ ?>
+                                    <h2 class="h2-title arapey-font"><?php echo $services_about_title; ?></h2>
+                                    <?php 
+                                } ?>
                         </div>
-                        <div class="common-text-description">
-                            <p>Our Individual Counseling services are designed to be a safe and nurturing space where you can explore your thoughts, emotions, and challenges while working towards achieving a more balanced and fulfilling life. At Wellspring of Hope, we understand that every individual's journey is unique, and we are committed to providing tailored support to meet your specific needs. People may seek therapy for help with issues that are hard to face alone.</p>
-                            <p>Our team of experienced and compassionate counselors are here to help you reduce anxiety, gain insights into your behaviors and thought patterns, and develop effective coping strategies. We believe that by addressing these areas, you can unlock your true potential and lead a more meaningful and satisfying life.</p>
-                        </div>
+                        <?php 
+                            if( isset($services_about_content) && !empty($services_about_content) ){ ?>
+                                <div class="common-text-description">
+                                    <?php echo $services_about_content; ?>
+                                </div>
+                                <?php 
+                            } 
+                            if( isset($about_button_link) && !empty($about_button_link) ){
+                                $target = $about_button_link;
+                                $title = $about_button_title;
+                            }else if( isset($learn_more_link) && !empty($learn_more_link) ){
+                                $target = $learn_more_link;
+                                $title = $learn_more_text;
+                            }
+                        ?>
                         <div class="common-text-content-btn">
-                            <a href="#" class="sec-btn sm-btn arapey-font" title="Meet Our Team">Contact Us</a>
+                            <a href="<?php echo $target; ?>" class="sec-btn sm-btn arapey-font" title="Meet Our Team"><?php echo $title; ?></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 order-1 order-lg-2">
                     <div class="services-about-right">
                         <div class="services-about-image-box">
-                            <div class="back-img" style=" background-image: url('<?php echo home_url(); ?>/wp-content/uploads/2023/09/services-about-image01.jpg');"></div>
+                            <div class="back-img" <?php if( isset($services_about_image) && !empty($services_about_image) ){ ?> style=" background-image: url('<?php echo $services_about_image; ?>');" <?php } ?>></div>
                         </div>
                     </div>
                 </div>
@@ -51,110 +86,94 @@
 <!-- Services About Section End -->
 
 <!-- Services Feature Section Start -->
-
 <section class="services-feature">
     <div class="sec-wp">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="services-feature-title">
-                        <h3 class="h3-title">Our Individual Counseling services cover a wide range of areas, including:</h3>
+                        <?php 
+                            $services_heading = get_field('services_heading');
+                            if( isset($services_heading) && !empty($services_heading) ){ ?>
+                                <h3 class="h3-title"><?php echo $services_heading; ?></h3>
+                                <?php 
+                            } ?>
                     </div>
                 </div>
             </div>
             <div class="services-feature-wp">
+                <?php 
+                    if( have_rows('services')){  ?>
+                        <div class="row">
+                            <?php 
+                                while( have_rows('services')){
+                                    the_row();
+                                    $services_title = get_sub_field('services_title');
+                                    $services_content = get_sub_field('services_content'); ?>
+                                    <div class="col-lg-4">
+                                        <div class="services-feature-box">
+                                            <div class="services-feature-Content-title">
+                                                <?php 
+                                                    if( isset($services_title) && !empty($services_title) ){ ?>
+                                                        <h2 class="h2-title arapey-font"><?php echo $services_title; ?></h2>
+                                                        <?php 
+                                                    } ?>
+                                            </div>
+                                            <?php 
+                                                if( isset($services_content) && !empty($services_content) ){ ?>
+                                                    <div class="services-feature-description">
+                                                        <?php echo $services_content; ?>
+                                                    </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                <?php 
+                            } ?>
+                        </div>
+                        <?php 
+                    } ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Feature Section End -->
+
+<!-- Services About Even Section Start -->
+<?php 
+    $counseling_services_title = get_field('counseling_services_title');
+    $counseling_services_content = get_field('counseling_services_content');
+    $counseling_services_image = get_field('counseling_services_image');
+
+    if( isset($counseling_services_title) && !empty($counseling_services_title) ){
+?>
+<section class="services-about-sec even">
+    <div class="sec-wp">
+        <div class="container">
+            <div class="services-about-sec-wp">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Anxiety and Stress Management</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>We provide evidence-based techniques to manage anxiety and stress, helping you regain a sense of peace and control in your life.</p>
+                    <div class="col-lg-6">
+                        <div class="services-about-right">
+                            <div class="services-about-image-box">
+                                <div class="back-img" <?php if( isset($counseling_services_image) && !empty($counseling_services_image) ){ ?> style=" background-image: url('<?php echo $counseling_services_image; ?>');" <?php } ?>></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Depression</h2>
+                    <div class="col-lg-6">
+                        <div class="common-text-content services-page-common-text">
+                            <div class="sec-title">
+                                <?php 
+                                    if( isset($counseling_services_title) && !empty($counseling_services_title) ){ ?>
+                                        <h2 class="h2-title arapey-font"><?php echo $counseling_services_title; ?></h2>
+                                        <?php 
+                                    } ?>
                             </div>
-                            <div class="services-feature-description">
-                                <p>Addressing the challenges of depression, our counselors provide support and strategies to promote mental well-being.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Trauma Therapy</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Our experienced therapists guide you through healing from trauma, fostering resilience and growth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Career Changes</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Navigate career transitions and changes while maintaining emotional well-being and personal growth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Life Changes</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Embrace life's transitions with resilience and support, ensuring a smoother journey toward new chapters.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Addiction</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Whether you are struggling with substance abuse, compulsive behaviors, or other addictive patterns, we are here to offer guidance, encouragement,
-                                    and a non-judgmental space for healing.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Dating Life Guidance</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Navigating the complexities of dating can be challenging. Our counselors offer support and advice to help you build healthy and fulfilling
-                                    relationships.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Relationship Enhancement</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Whether you're experiencing difficulties in your romantic relationship, family dynamics, or friendships, we are here to facilitate open
-                                    communication and foster deeper connections.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="services-feature-box">
-                            <div class="services-feature-Content-title">
-                                <h2 class="h2-title arapey-font">Goal Achievement</h2>
-                            </div>
-                            <div class="services-feature-description">
-                                <p>Our counselors will work with you to set meaningful and achievable goals, providing guidance and support throughout your journey to success.</p>
-                            </div>
+                            <?php 
+                                if( isset($counseling_services_content) && !empty($counseling_services_content) ){ ?>
+                                    <div class="common-text-description">
+                                        <?php echo $counseling_services_content; ?>
+                                    </div>
+                                    <?php 
+                                } ?>
                         </div>
                     </div>
                 </div>
@@ -162,5 +181,54 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<!-- Services About Even Section End -->
 
-<!-- Services Feature Section End -->
+<!-- Your Journey Section Start -->
+<?php 
+    $counseling_title = get_field('counseling_title');
+    $counseling_content = get_field('counseling_content');
+    $counseling_banner_image = get_field('counseling_banner_image');
+    $learn_more_link = get_field('learn_more_link', 'option');
+    $learn_more_text = get_field('learn_more_text', 'option');
+    $lynchburg_phone_number = get_field('phone_number', 'option');
+?>
+<section class="your-journey-sec back-img" <?php if( isset($counseling_banner_image) && !empty($counseling_banner_image) ){ ?>style=" background-image: url('<?php echo $counseling_banner_image; ?>');" <?php } ?>>
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="your-journey-content-box">
+                        <div class="sec-title">
+                            <?php 
+                                if( isset($counseling_title) && !empty($counseling_title) ){ ?>
+                                    <h2 class="h2-title arapey-font"><?php echo $counseling_title; ?></h2>
+                                    <?php 
+                                } ?>
+                        </div>
+                        <?php 
+                            if( isset($counseling_content) && !empty($counseling_content) ){ ?>
+                                <div class="your-journey-content-description white-text">
+                                    <?php echo $counseling_content; ?>
+                                </div>
+                                <?php 
+                            } ?>
+
+                            <div class="your-journey-content-btn">
+                                <?php 
+                                    if( is_page(28) || is_page(30)){ ?>
+                                        <a href="<?php echo $lynchburg_phone_number['url']; ?>" class="sec-btn arapey-font" title="Lynchburg - <?php echo $lynchburg_phone_number['title']; ?>">Lynchburg - <?php echo $lynchburg_phone_number['title']; ?></a>
+                                        <a href="<?php echo $lynchburg_phone_number['url']; ?>" class="sec-btn arapey-font" title="Richmond - <?php echo $lynchburg_phone_number['title']; ?> ">Richmond - <?php echo $lynchburg_phone_number['title']; ?></a>
+                                    <?php }else if( is_page(32)){ ?>
+                                        <a href="<?php echo $learn_more_link; ?>" class="sec-btn arapey-font" title="Meet Our Team"><?php echo $learn_more_text; ?></a>
+                                    <?php }
+                                ?>
+                                
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Your Journey Section End -->

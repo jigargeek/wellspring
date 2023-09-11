@@ -64,9 +64,6 @@ $counseling_about_content = get_field('counseling_about_content');
                     </div>
                     <div class="col-lg-6">
                         <div class="counseling-group-contact-form">
-                            <div class="sec-title">
-                                <h2 class="h2-title arapey-font">Sign Me Up!</h2>
-                            </div>
                             <div class="contact-form">
                                 <?php echo do_shortcode('[contact-form-7 id="007d0fc" title="Counselling Group Form"]'); ?>
                             </div>

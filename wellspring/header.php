@@ -13,12 +13,10 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
-
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
@@ -29,7 +27,7 @@
 
 		<!-- Header Start -->
 		<header id="masthead" class="site-header">
-			<div class="top-header">
+			<div class="top-header for-des">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
@@ -79,16 +77,23 @@
 									</button>
 									<div class="header-mobile-menu">
 										<?php
-										wp_nav_menu(
-											array(
-												'theme_location' => 'menu-1',
-												'menu_id'        => 'primary-menu',
-											)
-										);
+											wp_nav_menu(
+												array(
+													'theme_location' => 'menu-1',
+													'menu_id'        => 'primary-menu',
+												)
+											);
 										?>
-										<div class="header-btn">
-											<a href="javascript:void(0)" class="sec-btn sm-btn">Current Clients</a>
-										</div>
+										<?php 
+											$client_url = get_field('client_url','option'); 
+											$client_text = get_field('client_text','option'); ?>
+											<div class="header-btn">
+												<?php 
+													if(isset($client_url) && !empty($client_url) ){ ?>
+														<a href="<?php echo $client_url; ?>" title="Current Clients" class="sec-btn sm-btn" target="_blank"><?php echo $client_text; ?></a>
+														<?php 
+													} ?>
+											</div>
 									</div>
 								</nav>
 							</div>
