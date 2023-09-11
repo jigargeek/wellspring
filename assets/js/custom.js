@@ -324,7 +324,7 @@ jQuery(document).ready(function ($) {
             ]
         });
     }
-
+    
     /* Scroll To Top JS */
     jQuery(window).scroll(function () {
         if (jQuery(this).scrollTop() > 100) {
